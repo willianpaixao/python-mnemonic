@@ -13,22 +13,23 @@ Abstract
 This BIP describes the implementation of a mnemonic code or mnemonic sentence --
 a group of easy to remember words -- for the generation of deterministic wallets.
 
-It consists of two parts: generating the mnenomic, and converting it into a
+It consists of two parts: generating the mnemonic, and converting it into a
 binary seed. This seed can be later used to generate deterministic wallets using
 BIP-0032 or similar methods.
 
 BIP Paper
 ---------
 
-See https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
-for full specification
+See `BIP-0039`_ for the full specification.
 
 Installation
 ------------
 
 To install this library and its dependencies use:
 
- ``pip install mnemonic``
+.. code-block:: sh
+
+   $ pip install mnemonic
 
 Usage examples
 --------------
@@ -47,7 +48,7 @@ Initialize class instance, picking from available dictionaries:
 - french
 - italian
 - japanese
-- korean 
+- korean
 - spanish
 
 .. code-block:: python
@@ -60,15 +61,17 @@ Generate word list given the strength (128 - 256):
 .. code-block:: python
 
    words = mnemo.generate(strength=256)
-  
+
 Given the word list and custom passphrase (empty in example), generate seed:
 
 .. code-block:: python
 
-   seed = mnemo.to_seed(words, passphrase="") 
+   seed = mnemo.to_seed(words, passphrase="")
 
 Given the word list, calculate original entropy:
 
 .. code-block:: python
 
    entropy = mnemo.to_entropy(words)
+
+.. _BIP-0039: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
