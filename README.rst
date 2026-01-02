@@ -7,6 +7,8 @@ python-mnemonic
 Reference implementation of BIP-0039: Mnemonic code for generating
 deterministic keys
 
+Maintained by `Trezor <https://trezor.io>`_. See the `GitHub repository <https://github.com/trezor/python-mnemonic>`_ for source code and issue tracking.
+
 Abstract
 --------
 
@@ -76,5 +78,37 @@ Given the word list, calculate original entropy:
 .. code-block:: python
 
    entropy = mnemo.to_entropy(words)
+
+Command-line interface
+----------------------
+
+The ``mnemonic`` command provides CLI access to the library:
+
+.. code-block:: sh
+
+   $ mnemonic create --help
+   $ mnemonic check --help
+   $ mnemonic to-seed --help
+
+Generate a new mnemonic phrase:
+
+.. code-block:: sh
+
+   $ mnemonic create
+   $ mnemonic create -s 256 -l english -p "my passphrase"
+
+Validate a mnemonic phrase:
+
+.. code-block:: sh
+
+   $ mnemonic check abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about
+   $ echo "abandon abandon ..." | mnemonic check
+
+Derive seed from a mnemonic phrase:
+
+.. code-block:: sh
+
+   $ mnemonic to-seed abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about
+   $ mnemonic to-seed -p "my passphrase" word1 word2 ...
 
 .. _BIP-0039: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
