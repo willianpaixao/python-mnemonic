@@ -96,6 +96,10 @@ Generate a new mnemonic phrase:
 
    $ mnemonic create
    $ mnemonic create -s 256 -l english -p "my passphrase"
+   $ mnemonic create -s 256 -l english
+   $ mnemonic create -P                  # prompt for passphrase (hidden input)
+   $ mnemonic create --hide-seed         # only output mnemonic, not the seed
+   $ MNEMONIC_PASSPHRASE="secret" mnemonic create
 
 Validate a mnemonic phrase:
 
@@ -110,5 +114,7 @@ Derive seed from a mnemonic phrase:
 
    $ mnemonic to-seed abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon abandon about
    $ mnemonic to-seed -p "my passphrase" word1 word2 ...
+   $ mnemonic to-seed -P word1 word2 ...   # prompt for passphrase (hidden input)
+   $ MNEMONIC_PASSPHRASE="secret" mnemonic to-seed word1 word2 ...
 
 .. _BIP-0039: https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
